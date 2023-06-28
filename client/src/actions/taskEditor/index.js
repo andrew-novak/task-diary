@@ -4,23 +4,23 @@ import {
   TASK_EDITOR_INPUT_CLOSE,
   TASK_EDITOR_INPUT_SET,
   TASK_EDITOR_RESET,
-} from '../../constants/actionTypes';
+} from "../../constants/actionTypes";
 
-export const openTaskInTaskEditor = (taskId, typeId, start, end) => dispatch =>
-  dispatch({ type: OPEN_TASK_IN_TASK_EDITOR, taskId, typeId, start, end });
+export const openTaskInTaskEditor = (taskId, typeId, start, end) => (
+  dispatch
+) => dispatch({ type: OPEN_TASK_IN_TASK_EDITOR, taskId, typeId, start, end });
 
-export const openInput = stateName => dispatch =>
+export const openInput = (stateName) => (dispatch) =>
   dispatch({ type: TASK_EDITOR_INPUT_OPEN, stateName });
 
-export const closeInput = stateName => dispatch =>
+export const closeInput = (stateName) => (dispatch) =>
   dispatch({ type: TASK_EDITOR_INPUT_CLOSE, stateName });
 
-export const setInput = (stateName, newValue) => dispatch =>
+export const setInput = (stateName, newValue) => (dispatch) =>
   dispatch({ type: TASK_EDITOR_INPUT_SET, stateName, newValue });
 
-export const reset = () => dispatch =>
-  dispatch({ type: TASK_EDITOR_RESET });
+export const reset = () => (dispatch) => dispatch({ type: TASK_EDITOR_RESET });
 
-export { default as apply } from './apply';
+export { default as apply } from "./apply";
 
-export { default as deleteTask } from './deleteTask';
+export { default as deleteTask } from "./deleteTask";

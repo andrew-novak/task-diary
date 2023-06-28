@@ -1,17 +1,20 @@
-import { AUTH_START, AUTH_FAILURE } from '../../constants/actionTypes';
-import app from 'axios';
+import axios from "axios";
 
-import handleResponse from './handleResponse';
+import { AUTH_START, AUTH_FAILURE } from "../../constants/actionTypes";
+import { API_URL } from "../../constants/urls";
+import handleResponse from "./handleResponse";
 
-export default (email, password) => dispatch => {
+const login = (email, password) => (dispatch) => {
   dispatch({ type: AUTH_START });
 
-  if (!email || !password) return dispatch({ type: AUTH_FAILURE, error: 'Enter credentials' });
+  if (!email || !password)
+    return dispatch({ type: AUTH_FAILURE, error: "Enter credentials" });
 
-  return app({
-    method: 'POST',
-    url: '/auth/login',
+  return axios({
+    method: "POST",
+    url: `${API_URL}/auth/login`,
     data: { email, password },
-  })
-    .then(res => dispatch(handleResponse(res)));
-}
+  }).then((res) => dispatch(handleResponse(res)));
+};
+
+export default login;

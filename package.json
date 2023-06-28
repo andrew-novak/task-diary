@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "install-both": "npm i && npm i --prefix client",
+    "install:both": "npm i && npm i --prefix client",
     "api": "node server.js",
     "dev:api": "nodemon -r dotenv/config server.js",
     "dev:client": "npm start --prefix client",
