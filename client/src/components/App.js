@@ -72,26 +72,14 @@ function App() {
       <ThemeProvider theme={theme}>
         <MuiPickersUtilsProvider utils={DateFnsUtils}>
           <CssBaseline />
-          <Router history={history}>
+          <Router history={history} basename={baseUrl}>
             <Switch>
-              <PrivateRoute exact path={`${baseUrl}/`} component={MainPage} />
-              <Route
-                exact
-                path={`${baseUrl}/error-auth`}
-                component={ErrorAuthPage}
-              />
-              <Route
-                exact
-                path={`${baseUrl}/error-general`}
-                component={ErrorGeneralPage}
-              />
-              <Route exact path={`${baseUrl}/login`} component={LoginPage} />
-              <Route
-                exact
-                path={`${baseUrl}/register`}
-                component={RegisterPage}
-              />
-              <Redirect from={`${baseUrl}*`} to={`${baseUrl}/`} />
+              <PrivateRoute exact path="/" component={MainPage} />
+              <Route exact path="/error-auth" component={ErrorAuthPage} />
+              <Route exact path="/error-general" component={ErrorGeneralPage} />
+              <Route exact path="/login" component={LoginPage} />
+              <Route exact path="/register" component={RegisterPage} />
+              <Redirect from="*" to={`${baseUrl}/`} />
             </Switch>
           </Router>
         </MuiPickersUtilsProvider>
