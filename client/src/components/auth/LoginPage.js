@@ -1,9 +1,9 @@
-import React, { useEffect } from 'react';
-import { connect } from 'react-redux';
+import React, { useEffect } from "react";
+import { connect } from "react-redux";
 
-import AuthProvider from './AuthProvider';
-import logout from '../../actions/logout';
-import { login } from '../../actions/auth';
+import AuthProvider from "./AuthProvider";
+import logout from "../../actions/logout";
+import { login } from "../../actions/auth";
 
 function LoginPage(props) {
   const { email, password, logout, login } = props;
@@ -17,12 +17,14 @@ function LoginPage(props) {
     login(email, password);
   }
 
+  const baseUrl = process.env.PUBLIC_URL;
+
   return (
     <AuthProvider
-      title='Login'
-      submitText='Log in'
-      onSubmit={ handleSubmit }
-      link2={{ text: 'Create account', href: '/register' }}
+      title="Login"
+      submitText="Log in"
+      onSubmit={handleSubmit}
+      link2={{ text: "Create account", href: `${baseUrl}/register` }}
     />
   );
 }
@@ -34,7 +36,4 @@ function mapState(state) {
   return { email, password };
 }
 
-export default connect(
-  mapState,
-  { logout, login },
-)(LoginPage);
+export default connect(mapState, { logout, login })(LoginPage);
