@@ -8,6 +8,7 @@ import { Switch, Router, Route, Redirect } from "react-router-dom";
 
 import store from "../store";
 import history from "../history";
+import { BASE_URL } from "../constants/urls";
 import PrivateRoute from "./PrivateRoute";
 import { MainPage } from "./private";
 import { ErrorAuthPage, ErrorGeneralPage } from "./errors";
@@ -64,22 +65,19 @@ function App() {
     // this.props clearAlert();
   });
   */
-
-  const baseUrl = process.env.PUBLIC_URL;
-
   return (
     <StoreProvider store={store}>
       <ThemeProvider theme={theme}>
         <MuiPickersUtilsProvider utils={DateFnsUtils}>
           <CssBaseline />
-          <Router history={history} basename={baseUrl}>
+          <Router history={history}>
             <Switch>
               <PrivateRoute exact path="/" component={MainPage} />
               <Route exact path="/error-auth" component={ErrorAuthPage} />
               <Route exact path="/error-general" component={ErrorGeneralPage} />
               <Route exact path="/login" component={LoginPage} />
               <Route exact path="/register" component={RegisterPage} />
-              <Redirect from="*" to={`${baseUrl}/`} />
+              <Redirect from="*" to={`${BASE_URL}/`} />
             </Switch>
           </Router>
         </MuiPickersUtilsProvider>

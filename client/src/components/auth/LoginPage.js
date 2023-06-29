@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import AuthProvider from "./AuthProvider";
 import logout from "../../actions/logout";
 import { login } from "../../actions/auth";
+import { BASE_URL } from "../../constants/urls";
 
 function LoginPage(props) {
   const { email, password, logout, login } = props;
@@ -17,14 +18,12 @@ function LoginPage(props) {
     login(email, password);
   }
 
-  const baseUrl = process.env.PUBLIC_URL;
-
   return (
     <AuthProvider
       title="Login"
       submitText="Log in"
       onSubmit={handleSubmit}
-      link2={{ text: "Create account", href: `${baseUrl}/register` }}
+      link2={{ text: "Create account", href: `${BASE_URL}/register` }}
     />
   );
 }
