@@ -8,12 +8,9 @@ const handleResponse = (res, success, failure) => (dispatch) => {
     return dispatch({ type: success, colors, types, pageDate, pageTasks });
   }
 
-  const baseUrl = process.env.PUBLIC_URL;
+  if (message === "invalid-id-token") return history.push("/error-auth");
 
-  if (message === "invalid-id-token")
-    return history.push(`${baseUrl}/error-auth`);
-
-  if (!failure) return history.push(`${baseUrl}/error-general`);
+  if (!failure) return history.push("/error-general");
 
   return dispatch({ type: failure, error: message });
 };
