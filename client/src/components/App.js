@@ -1,6 +1,6 @@
 import React from "react";
 import { Provider as StoreProvider } from "react-redux";
-import { createMuiTheme, ThemeProvider } from "@material-ui/core/styles";
+import { createTheme, ThemeProvider } from "@material-ui/core/styles";
 import { MuiPickersUtilsProvider } from "@material-ui/pickers";
 import DateFnsUtils from "@date-io/date-fns";
 import { CssBaseline } from "@material-ui/core";
@@ -13,7 +13,7 @@ import { MainPage } from "./private";
 import { ErrorAuthPage, ErrorGeneralPage } from "./errors";
 import { LoginPage, RegisterPage } from "./auth";
 
-const theme = createMuiTheme({
+const theme = createTheme({
   spacing: 8,
   margin: {
     auth: 64,
@@ -66,6 +66,9 @@ function App() {
   */
 
   const baseUrl = process.env.PUBLIC_URL;
+
+  console.log("history:", history);
+  console.log("baseUrl:", baseUrl);
 
   return (
     <StoreProvider store={store}>
