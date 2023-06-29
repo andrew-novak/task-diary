@@ -1,8 +1,6 @@
 import React from "react";
 import { Route, Redirect } from "react-router-dom";
 
-import { BASE_URL } from "../constants/urls";
-
 function PrivateRoute({ component: Component, ...rest }) {
   return (
     <Route
@@ -13,7 +11,7 @@ function PrivateRoute({ component: Component, ...rest }) {
         ) : (
           <Redirect
             to={{
-              pathname: `${BASE_URL}/login`,
+              pathname: "/login",
               state: { from: props.location },
             }}
           />

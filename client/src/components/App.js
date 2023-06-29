@@ -8,7 +8,6 @@ import { Switch, Router, Route, Redirect } from "react-router-dom";
 
 import store from "../store";
 import history from "../history";
-import { BASE_URL } from "../constants/urls";
 import PrivateRoute from "./PrivateRoute";
 import { MainPage } from "./private";
 import { ErrorAuthPage, ErrorGeneralPage } from "./errors";
@@ -77,7 +76,7 @@ function App() {
               <Route exact path="/error-general" component={ErrorGeneralPage} />
               <Route exact path="/login" component={LoginPage} />
               <Route exact path="/register" component={RegisterPage} />
-              <Redirect from="*" to={`${BASE_URL}/`} />
+              <Redirect from="*" to="/" />
             </Switch>
           </Router>
         </MuiPickersUtilsProvider>
