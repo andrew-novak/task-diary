@@ -67,9 +67,6 @@ function App() {
 
   const baseUrl = process.env.PUBLIC_URL;
 
-  console.log("history:", history);
-  console.log("baseUrl:", baseUrl);
-
   return (
     <StoreProvider store={store}>
       <ThemeProvider theme={theme}>
@@ -82,7 +79,7 @@ function App() {
               <Route exact path="/error-general" component={ErrorGeneralPage} />
               <Route exact path="/login" component={LoginPage} />
               <Route exact path="/register" component={RegisterPage} />
-              <Redirect from="*" to="/" />
+              <Redirect from="*" to={`${baseUrl}/`} />
             </Switch>
           </Router>
         </MuiPickersUtilsProvider>
