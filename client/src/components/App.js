@@ -82,7 +82,7 @@ function App() {
               <Route exact path="/error-general" component={ErrorGeneralPage} />
               <Route exact path="/login" component={LoginPage} />
               <Route exact path="/register" component={RegisterPage} />
-              <Redirect from="*" to={`${baseUrl}/`} />
+              <Redirect from="*" to="/" />
             </Switch>
           </Router>
         </MuiPickersUtilsProvider>
