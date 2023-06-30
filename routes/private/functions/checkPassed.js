@@ -17,8 +17,6 @@ function checkPassed(passedOptions, req, res, callback) {
     const pageDateString = req.body.pageDate;
     if (!pageDateString) return res.json({ message: "No page date provided" });
     const pageDate = new Date(pageDateString);
-    console.log("pageDate:", pageDate);
-    console.log("isValidPageDate(pageDate):", isValidPageDate(pageDate));
     if (!isValidPageDate(pageDate))
       return res.json({ message: "Invalid page date" });
   }
