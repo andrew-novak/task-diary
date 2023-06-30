@@ -4,8 +4,6 @@ import { GET_DATA_REQUEST, GET_DATA_SUCCESS } from "../constants/actionTypes";
 import { API_URL } from "../constants/urls";
 import handleResponse from "./handleResponse";
 
-const success = GET_DATA_SUCCESS;
-
 function getPageDate(option, dateObj) {
   const pageDate = localStorage.getItem("pageDate");
   if (option) {
@@ -27,7 +25,7 @@ const getData = (option, dateObj) => (dispatch) => {
     url: `${API_URL}/private/get-data`,
     headers: { Authorization: `Bearer ${idToken}` },
     data: { pageDate },
-  }).then((res) => dispatch(handleResponse(res, success)));
+  }).then((res) => dispatch(handleResponse(res, GET_DATA_SUCCESS)));
 };
 
 export default getData;
