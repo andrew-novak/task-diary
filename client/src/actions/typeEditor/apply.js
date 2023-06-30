@@ -8,9 +8,6 @@ import {
 import { API_URL } from "../../constants/urls";
 import handleResponse from "../handleResponse";
 
-const success = TYPE_EDITOR_APPLY_SUCCESS;
-const failure = TYPE_EDITOR_APPLY_FAILURE;
-
 const applyType = (setType) => (dispatch) => {
   dispatch({ type: TYPE_EDITOR_APPLY_START });
   const { name, colorId } = setType;
@@ -30,7 +27,11 @@ const applyType = (setType) => (dispatch) => {
     url: `${API_URL}/private/set-type`,
     headers: { Authorization: `Bearer ${idToken}` },
     data: { setType, pageDate },
-  }).then((res) => dispatch(handleResponse(res, success, failure)));
+  }).then((res) =>
+    dispatch(
+      handleResponse(res, TYPE_EDITOR_APPLY_SUCCESS, TYPE_EDITOR_APPLY_FAILURE)
+    )
+  );
 };
 
 export default applyType;

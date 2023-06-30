@@ -8,9 +8,6 @@ import {
 import { API_URL } from "../../constants/urls";
 import handleResponse from "../handleResponse";
 
-const success = TYPE_EDITOR_DELETE_SUCCESS;
-const failure = TYPE_EDITOR_DELETE_FAILURE;
-
 const deleteType = (deleteTypeId) => (dispatch) => {
   dispatch({ type: TYPE_EDITOR_DELETE_START });
 
@@ -28,7 +25,15 @@ const deleteType = (deleteTypeId) => (dispatch) => {
     url: `${API_URL}/private/delete-type`,
     headers: { Authorization: `Bearer ${idToken}` },
     data: { deleteTypeId, pageDate },
-  }).then((res) => dispatch(handleResponse(res, success, failure)));
+  }).then((res) =>
+    dispatch(
+      handleResponse(
+        res,
+        TYPE_EDITOR_DELETE_SUCCESS,
+        TYPE_EDITOR_DELETE_FAILURE
+      )
+    )
+  );
 };
 
 export default deleteType;

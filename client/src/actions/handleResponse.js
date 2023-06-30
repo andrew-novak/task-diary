@@ -1,18 +1,18 @@
 import history from "../history";
 
-const handleResponse = (res, success, failure) => (dispatch) => {
+const handleResponse = (res, SUCCESS_TYPE, FAILURE_TYPE) => (dispatch) => {
   const { message, colors, types, pageDate, pageTasks } = res.data;
 
   if (message === "success") {
     localStorage.setItem("pageDate", pageDate);
-    return dispatch({ type: success, colors, types, pageDate, pageTasks });
+    return dispatch({ type: SUCCESS_TYPE, colors, types, pageDate, pageTasks });
   }
 
   if (message === "invalid-id-token") return history.push("/error-auth");
 
-  if (!failure) return history.push("/error-general");
-
-  return dispatch({ type: failure, error: message });
+  console.log("response:", res);
+  history.push("/error-general");
+  return dispatch({ type: FAILURE_TYPE, error: message });
 };
 
 export default handleResponse;

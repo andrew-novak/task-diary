@@ -8,9 +8,6 @@ import {
 import { API_URL } from "../../constants/urls";
 import handleResponse from "../handleResponse";
 
-const success = TASK_EDITOR_APPLY_SUCCESS;
-const failure = TASK_EDITOR_APPLY_FAILURE;
-
 const applyTask = (passsedSetTask) => (dispatch) => {
   dispatch({ type: TASK_EDITOR_APPLY_START });
   const { taskId, typeId, start, end } = passsedSetTask;
@@ -36,7 +33,11 @@ const applyTask = (passsedSetTask) => (dispatch) => {
     url: `${API_URL}/private/set-task`,
     headers: { Authorization: `Bearer ${idToken}` },
     data: { setTask, pageDate },
-  }).then((res) => dispatch(handleResponse(res, success, failure)));
+  }).then((res) =>
+    dispatch(
+      handleResponse(res, TASK_EDITOR_APPLY_SUCCESS, TASK_EDITOR_APPLY_FAILURE)
+    )
+  );
 };
 
 export default applyTask;
