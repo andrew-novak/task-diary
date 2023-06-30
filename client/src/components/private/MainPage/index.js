@@ -1,18 +1,18 @@
-import React, { useEffect } from 'react';
-import { makeStyles } from '@material-ui/core';
-import { LinearProgress } from '@material-ui/core';
-import { connect } from 'react-redux';
+import React, { useEffect } from "react";
+import { makeStyles } from "@material-ui/core";
+import { LinearProgress } from "@material-ui/core";
+import { connect } from "react-redux";
 
-import Navigation from './Navigation';
-import Body from './Body';
-import getData from '../../../actions/getData';
+import Navigation from "./Navigation";
+import Body from "./Body";
+import getData from "../../../actions/getData";
 
-const useStyles = makeStyles(theme => ({
-  root: props => ({
-    pointerEvents: (props.waiting) ? 'none' : null,
+const useStyles = makeStyles((theme) => ({
+  root: (props) => ({
+    pointerEvents: props.waiting ? "none" : null,
   }),
   progress: {
-    position: 'fixed',
+    position: "fixed",
     bottom: 0,
     left: 0,
     right: 0,
@@ -26,13 +26,13 @@ function MainPage(props) {
 
   useEffect(() => {
     getData();
-  }, []);
+  }, [getData]);
 
   return (
-    <div className={ classes.root }>
+    <div className={classes.root}>
       <Navigation />
       <Body />
-      { (waiting) ? <LinearProgress className={ classes.progress } /> : null }
+      {waiting ? <LinearProgress className={classes.progress} /> : null}
     </div>
   );
 }
@@ -42,7 +42,4 @@ function mapState(state) {
   return { waiting };
 }
 
-export default connect(
-  mapState,
-  { getData },
-)(MainPage);
+export default connect(mapState, { getData })(MainPage);
