@@ -3,19 +3,18 @@ import {
   AUTH_START,
   AUTH_SUCCESS,
   AUTH_FAILURE,
-} from '../constants/actionTypes';
+} from "../constants/actionTypes";
 
 const initialState = {
   waiting: false,
   error: null,
-  email: '',
-  password: '',
-  confirmPassword: '',
+  email: "",
+  password: "",
+  confirmPassword: "",
 };
 
-export default (state = initialState, action) => {
+const auth = (state = initialState, action) => {
   switch (action.type) {
-
     case AUTH_CHANGE_INPUT:
       return {
         ...state,
@@ -39,6 +38,7 @@ export default (state = initialState, action) => {
 
     default:
       return state;
-
   }
-}
+};
+
+export default auth;

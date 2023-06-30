@@ -4,15 +4,14 @@ import {
   TYPE_EDITOR_DELETE_SUCCESS,
   TASK_EDITOR_APPLY_SUCCESS,
   TASK_EDITOR_DELETE_SUCCESS,
-} from '../constants/actionTypes';
+} from "../constants/actionTypes";
 
 const initialState = {
   pageTasks: null,
 };
 
-export default (state = initialState, action) => {
+const pageTasks = (state = initialState, action) => {
   switch (action.type) {
-
     case GET_DATA_SUCCESS:
     case TYPE_EDITOR_APPLY_SUCCESS:
     case TYPE_EDITOR_DELETE_SUCCESS:
@@ -25,6 +24,7 @@ export default (state = initialState, action) => {
 
     default:
       return state;
-
   }
-}
+};
+
+export default pageTasks;

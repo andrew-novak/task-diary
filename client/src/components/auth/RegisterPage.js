@@ -11,7 +11,7 @@ function RegisterPage(props) {
 
   useEffect(() => {
     logout();
-  }, []);
+  }, [logout]);
 
   function handleSubmit(event) {
     event.preventDefault();

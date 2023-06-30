@@ -1,29 +1,25 @@
 import {
   OPEN_TASK_IN_TASK_EDITOR,
-
   TASK_EDITOR_INPUT_OPEN,
   TASK_EDITOR_INPUT_CLOSE,
   TASK_EDITOR_INPUT_SET,
   TASK_EDITOR_RESET,
-
   TASK_EDITOR_APPLY_START,
   TASK_EDITOR_APPLY_SUCCESS,
   TASK_EDITOR_APPLY_FAILURE,
-
   TASK_EDITOR_DELETE_START,
   TASK_EDITOR_DELETE_SUCCESS,
   TASK_EDITOR_DELETE_FAILURE,
-
   TYPE_EDITOR_APPLY_SUCCESS,
   TYPE_EDITOR_DELETE_SUCCESS,
-} from '../constants/actionTypes';
+} from "../constants/actionTypes";
 
 const initialState = {
   waiting: false,
   taskId: null,
 
   typeSelectorIsOpened: false,
-  typeId: '',
+  typeId: "",
   startPickerIsOpened: false,
   start: null,
   endPickerIsOpened: false,
@@ -32,9 +28,8 @@ const initialState = {
   error: null,
 };
 
-export default (state = initialState, action) => {
+const taskEditor = (state = initialState, action) => {
   switch (action.type) {
-
     case OPEN_TASK_IN_TASK_EDITOR:
       return {
         ...state,
@@ -86,6 +81,7 @@ export default (state = initialState, action) => {
 
     default:
       return state;
-
   }
-}
+};
+
+export default taskEditor;

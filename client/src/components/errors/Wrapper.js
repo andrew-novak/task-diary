@@ -1,9 +1,9 @@
-import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import { Grid, Typography, Button } from '@material-ui/core';
-import { Link } from 'react-router-dom';
+import React from "react";
+import { makeStyles } from "@material-ui/core/styles";
+import { Grid, Typography, Button } from "@material-ui/core";
+import { Link } from "react-router-dom";
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   text: {
     marginBottom: theme.margin.main,
   },
@@ -14,23 +14,25 @@ function Wrapper(props) {
   const classes = useStyles();
 
   return (
-      <Grid
+    <Grid
       container
       spacing={0}
       direction="column"
       alignItems="center"
       justify="center"
-      style={{ minHeight: '100vh' }}
+      style={{ minHeight: "100vh" }}
     >
-      <Typography variant='h5' className={ classes.text }>{ text }</Typography>
+      <Typography variant="h5" className={classes.text}>
+        {text}
+      </Typography>
 
       <Button
-        component={ Link }
-        to={ buttonUrl }
-        variant='contained'
-        color='primary'
+        component={Link}
+        to={buttonUrl}
+        variant="contained"
+        color="primary"
       >
-        { buttonText }
+        {buttonText}
       </Button>
     </Grid>
   );

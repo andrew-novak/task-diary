@@ -11,7 +11,7 @@ function LoginPage(props) {
 
   useEffect(() => {
     logout();
-  }, []);
+  }, [logout]);
 
   function handleSubmit(event) {
     event.preventDefault();

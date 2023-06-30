@@ -2,15 +2,14 @@ import {
   GET_DATA_SUCCESS,
   TYPE_EDITOR_APPLY_SUCCESS,
   TYPE_EDITOR_DELETE_SUCCESS,
-} from '../constants/actionTypes';
+} from "../constants/actionTypes";
 
 const initialState = {
   colors: null,
 };
 
-export default (state = initialState, action) => {
+const colors = (state = initialState, action) => {
   switch (action.type) {
-
     case GET_DATA_SUCCESS:
     case TYPE_EDITOR_APPLY_SUCCESS:
     case TYPE_EDITOR_DELETE_SUCCESS:
@@ -21,6 +20,7 @@ export default (state = initialState, action) => {
 
     default:
       return state;
-
   }
-}
+};
+
+export default colors;

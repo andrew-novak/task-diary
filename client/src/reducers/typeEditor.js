@@ -1,31 +1,27 @@
 import {
   TYPE_EDITOR_CHANGE_INPUT,
-
   OPEN_TYPE_EDITOR,
   OPEN_TYPE_IN_TYPE_EDITOR,
   TYPE_EDITOR_RESET,
-
   TYPE_EDITOR_APPLY_START,
   TYPE_EDITOR_APPLY_SUCCESS,
   TYPE_EDITOR_APPLY_FAILURE,
-
   TYPE_EDITOR_DELETE_START,
   TYPE_EDITOR_DELETE_SUCCESS,
   TYPE_EDITOR_DELETE_FAILURE,
-} from '../constants/actionTypes';
+} from "../constants/actionTypes";
 
 const initialState = {
   waiting: false,
   isOpened: false,
   typeId: null,
-  name: '',
+  name: "",
   colorId: null,
   error: null,
 };
 
-export default (state = initialState, action) => {
+const typeEditor = (state = initialState, action) => {
   switch (action.type) {
-
     case TYPE_EDITOR_CHANGE_INPUT:
       return {
         ...state,
@@ -68,9 +64,9 @@ export default (state = initialState, action) => {
     case TYPE_EDITOR_RESET:
       return { ...initialState };
 
-
     default:
       return state;
-
   }
-}
+};
+
+export default typeEditor;

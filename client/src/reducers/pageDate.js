@@ -1,13 +1,12 @@
 import {
   PAGE_DATE_OPEN,
   PAGE_DATE_CLOSE,
-
   GET_DATA_SUCCESS,
   TYPE_EDITOR_APPLY_SUCCESS,
   TYPE_EDITOR_DELETE_SUCCESS,
   TASK_EDITOR_APPLY_SUCCESS,
   TASK_EDITOR_DELETE_SUCCESS,
-} from '../constants/actionTypes';
+} from "../constants/actionTypes";
 
 const initialState = {
   isOpened: false,
@@ -43,9 +42,8 @@ function getSplitDate(dateString) {
   return { day, month, year };
 }
 
-export default (state = initialState, action) => {
+const pageDate = (state = initialState, action) => {
   switch (action.type) {
-
     case PAGE_DATE_OPEN:
       return {
         ...state,
@@ -69,10 +67,9 @@ export default (state = initialState, action) => {
         splitDate,
       };
 
-
-
     default:
       return state;
-
   }
-}
+};
+
+export default pageDate;

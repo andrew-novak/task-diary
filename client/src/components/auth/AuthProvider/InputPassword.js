@@ -1,18 +1,18 @@
-import React, { Fragment } from 'react';
-import { makeStyles } from '@material-ui/core/styles';
+import React, { Fragment } from "react";
+import { makeStyles } from "@material-ui/core/styles";
 import {
   FormControl,
   InputLabel,
   OutlinedInput,
   InputAdornment,
   Tooltip,
-} from '@material-ui/core';
-import ErrorIcon from '@material-ui/icons/Error';
-import { connect } from 'react-redux';
+} from "@material-ui/core";
+import ErrorIcon from "@material-ui/icons/Error";
+import { connect } from "react-redux";
 
-import { changeInput } from '../../../actions/auth';
+import { changeInput } from "../../../actions/auth";
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   root: {
     marginTop: theme.margin.item,
     marginBottom: theme.margin.item,
@@ -21,8 +21,8 @@ const useStyles = makeStyles(theme => ({
     color: theme.palette.label.main,
   },
   adornment: {
-    '&:hover': {
-      cursor: 'pointer',
+    "&:hover": {
+      cursor: "pointer",
     },
   },
   notchedOutline: {
@@ -41,43 +41,40 @@ function InputPassword(props) {
   }, []);
 
   return (
-    <FormControl
-      fullWidth
-      variant='outlined'
-      className={ classes.root }
-    >
+    <FormControl fullWidth variant="outlined" className={classes.root}>
       <InputLabel
-        ref={ inputLabel }
-        id='type-selector-label-id'
-        className={ classes.label }
+        ref={inputLabel}
+        id="type-selector-label-id"
+        className={classes.label}
       >
         Password
       </InputLabel>
 
       <OutlinedInput
-        labelId='password-input-label'
-        labelWidth={ labelWidth }
-        name='password'
-        type='password'
-        value={ password }
-        onChange={ event => changeInput('password', event.target.value) }
+        id="password-input-label"
+        labelWidth={labelWidth}
+        name="password"
+        type="password"
+        value={password}
+        onChange={(event) => changeInput("password", event.target.value)}
         endAdornment={
-          (adornment)
-            ? (
-              <InputAdornment position='end'>
-                <Tooltip enterTouchDelay={ 0 } title={
+          adornment ? (
+            <InputAdornment position="end">
+              <Tooltip
+                enterTouchDelay={0}
+                title={
                   <Fragment>
                     <div>Must contains 8-30 characters</div>
                     <div>Must contains 1 digit</div>
                     <div>Must contains 1 lowercase</div>
                     <div>Must contains 1 uppercase</div>
                   </Fragment>
-                }>
-                  <ErrorIcon className={ classes.adornment } />
-                </Tooltip>
-              </InputAdornment>
-            )
-            : null
+                }
+              >
+                <ErrorIcon className={classes.adornment} />
+              </Tooltip>
+            </InputAdornment>
+          ) : null
         }
         classes={{ notchedOutline: classes.notchedOutline }}
       />
@@ -90,7 +87,4 @@ function mapState(state) {
   return { password };
 }
 
-export default connect(
-  mapState,
-  { changeInput },
-)(InputPassword);
+export default connect(mapState, { changeInput })(InputPassword);
