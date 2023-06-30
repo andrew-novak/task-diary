@@ -12,7 +12,7 @@ function getPageDate(option, dateObj) {
     if (option === "previous") return date.setDate(date.getDate() - 1);
     if (option === "pass-date") return dateObj;
   }
-  if (!pageDate) return new Date().setHours(0, 0, 0, 0);
+  if (!pageDate) return new Date().setUTCHours(0, 0, 0, 0);
   return pageDate;
 }
 
