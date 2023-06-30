@@ -12,7 +12,7 @@ const initialState = {};
 const logger = createLogger({});
 
 // Note: logger must be the last middleware in chain, otherwise it will log thunk and promise, not actual actions.
-const middleware = [thunk, ...(NODE_ENV !== "production" ? { logger } : {})];
+const middleware = [thunk, ...(NODE_ENV !== "production" ? [logger] : [])];
 
 const store = createStore(
   rootReducer,
