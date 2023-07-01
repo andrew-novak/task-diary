@@ -1,35 +1,50 @@
-import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import { LinearProgress, Container } from '@material-ui/core';
-import { connect } from 'react-redux';
+import React from "react";
+import { makeStyles } from "@material-ui/core/styles";
+import { LinearProgress, Container } from "@material-ui/core";
+import { connect } from "react-redux";
 
-import Title from './Title';
-import ErrorProvider from './ErrorProvider';
-import InputEmail from './InputEmail';
-import InputPassword from './InputPassword';
-import InputPasswordConfirm from './InputPasswordConfirm';
-import SubmitButton from './SubmitButton';
-import Links from './Links';
-import Copyright from './Copyright';
+import Title from "./Title";
+import ErrorProvider from "./ErrorProvider";
+import InputEmail from "./InputEmail";
+import InputPassword from "./InputPassword";
+import InputPasswordConfirm from "./InputPasswordConfirm";
+import SubmitButton from "./SubmitButton";
+import Links from "./Links";
+import Copyright from "./Copyright";
 
-const useStyles = makeStyles(theme => ({
-  root: props => ({
-    pointerEvents: (props.waiting) ? 'none' : null,
+const useStyles = makeStyles((theme) => ({
+  root: (props) => ({
+    pointerEvents: props.waiting ? "none" : null,
+    position: "absolute",
+    top: 0,
+    bottom: 0,
+    left: 0,
+    right: 0,
+    height: "100%",
+    width: "100%",
+    display: "flex",
+    flexDirection: "column",
   }),
+  container: {
+    flexGrow: 1,
+    display: "flex",
+    flexDirection: "column",
+  },
   panel: {
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
+    flexGrow: 1,
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
   },
   form: {
-    width: '100%', // Fix IE 11 issue.
+    width: "100%", // Fix IE 11 issue.
   },
   inputs: {
     marginTop: -theme.margin.item + theme.margin.auth,
     marginBottom: -theme.margin.item + theme.margin.auth,
   },
   progress: {
-    position: 'fixed',
+    position: "fixed",
     left: 0,
     right: 0,
     bottom: 0,
@@ -47,34 +62,30 @@ function AuthProvider(props) {
     link2,
     waiting,
   } = props;
-  const classes = useStyles({ waiting });;
+  const classes = useStyles({ waiting });
 
   return (
-    <div className={ classes.root }>
-      <Container component='main' maxWidth='xs'>
-        <div className={ classes.panel }>
-          <Title text={ title } />
+    <div className={classes.root}>
+      <Container component="main" maxWidth="xs" className={classes.container}>
+        <div className={classes.panel}>
+          <Title text={title} />
 
-          <form
-            noValidate
-            onSubmit={ onSubmit }
-            className={ classes.form }
-          >
-            <div className={ classes.inputs }>
+          <form noValidate onSubmit={onSubmit} className={classes.form}>
+            <div className={classes.inputs}>
               <ErrorProvider />
               <InputEmail />
-              <InputPassword adornment={ (registration) ? true : false } />
-              { (registration) ? <InputPasswordConfirm /> : null }
+              <InputPassword adornment={registration ? true : false} />
+              {registration ? <InputPasswordConfirm /> : null}
             </div>
 
-            <SubmitButton text={ submitText } />
+            <SubmitButton text={submitText} />
 
-            <Links link1={ link1 } link2={ link2 } />
+            <Links link1={link1} link2={link2} />
           </form>
         </div>
         <Copyright />
       </Container>
-      { (waiting) ? <LinearProgress className={ classes.progress } /> : null }
+      {waiting ? <LinearProgress className={classes.progress} /> : null}
     </div>
   );
 }
@@ -84,6 +95,4 @@ function mapState(state) {
   return { waiting };
 }
 
-export default connect(
-  mapState,
-)(AuthProvider);
+export default connect(mapState)(AuthProvider);
