@@ -32,17 +32,12 @@ Note that the following instructions do not include configuring standalone web s
 
 4. Navigate to `client` subdirectory using the command `cd ./client`.
 
-5. To set the homepage, use the command `npm set homepage <YourHomepageHere>`. If the website is located in the root location, you can set it as the current directory with `npm set homepage .`. For websites in sublocations, specify the full URL like `npm set homepage "https://example.com/apps/task-diary"`.
+5. To set the homepage, use the command `json -I -f package.json -e "this.homepage=\"<YourHomepageHere>\""`. If the website is located in the root location, you can set it as the current directory with `json -I -f package.json -e "this.homepage=\".\""`. For websites in sublocations, specify the full URL like `json -I -f package.json -e "this.homepage=\"https://example.com/apps/task-diary\""`.
 
-6. Build with environment variables, e.g.:
+6. Build with this react environment variable, e.g.:
+   `REACT_APP_API_URL="https://example.com/api" npm run build`.
 
-```
-npm run
-  REACT_APP_API_URL="https://example.com/api" \
-  npm run build
-```
-
-7. Rename and move `client/build` directory to a desired location (e.g. somewhere in `/usr/share/nginx`).
+7. After the previously ran build command, you can rename and move the resulting `client/build` directory to a desired location (e.g., somewhere in `/usr/share/nginx`).
 
 ### API:
 
@@ -52,4 +47,4 @@ npm run
 
 10. Rename and move the whole project root directory to a desired location, e.g. `mv ./cloned-task-diary ~/apis/task-diary-api`
 
-11. Start the SAPI using PM2: `NODE_ENV=production pm2 start YOUR_API_DIRECTORY/server.js --name YOUR_PM2_APP_NAME`, e.g. `NODE_ENV=production pm2 start ./task-diary-api/server.js --name task-diary-api`
+11. Start the API using PM2: `NODE_ENV=production pm2 start YOUR_API_DIRECTORY/server.js --name YOUR_PM2_APP_NAME`, e.g. `NODE_ENV=production pm2 start ./task-diary-api/server.js --name task-diary-api`
