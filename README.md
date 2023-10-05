@@ -1,10 +1,16 @@
+<img src="https://github.com/andrew-novak/task-diary/raw/main/client/src/components/private/MainPage/Navigation/components/logo.svg" alt="Task Diary web app logo" width="128" height="128">
+
 # task-diary
 
-This is the first website I've developed that includes both a frontend and an API.
+[Demo](https://andrewnovak.co.uk/demos/task-diary)
 
-The website assists registered users in gaining more control over their lives by providing tools to track and plan daily activities. The server-side, built with Express, stores user data in a MongoDB database. The user interface has been developed using React and Material-UI, ensuring a clean and modern design.
+A web app developed as my first attempt at creating a web API.
 
-Tested on Linux.
+The project assists registered users in gaining more control over their lives by providing tools to track and plan daily activities.
+
+The server-side, crafted with Express, stores user data within a MongoDB database.
+
+The user interface has been developed using React and Material-UI, ensuring a clean and modern design.
 
 ## How to run it in development:
 
