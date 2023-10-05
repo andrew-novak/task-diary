@@ -1,4 +1,4 @@
-<img src="https://github.com/andrew-novak/task-diary/raw/main/client/src/components/private/MainPage/Navigation/components/logo.svg" alt="Task Diary web app logo" width="128" height="128">
+<img src="https://github.com/andrew-novak/task-diary/raw/main/readmeAssets/logo-blue.svg" alt="Task Diary web app logo" width="128" height="128">
 
 # task-diary
 
